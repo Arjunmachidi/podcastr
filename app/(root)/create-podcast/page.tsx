@@ -27,13 +27,15 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
 import GeneratePodcast from "@/components/GeneratePodcast"
-import GenerateThumbnail from "@/components/GenerateThumbnail"
+
 import { Loader } from "lucide-react"
 import { Id } from "@/convex/_generated/dataModel"
 import { useToast } from "@/components/ui/use-toast"
 import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { useRouter } from "next/navigation"
+import GenerateThumbnail from "@/components/GenerateThumbnail"
+
 
 const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx'];
 
@@ -56,6 +58,10 @@ const CreatePodcast = () => {
   const [voicePrompt, setVoicePrompt] = useState('');
   
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [videoStorageId, setVideoStorageId] = useState<string>('');
+  const [videoPrompt, setVideoPrompt] = useState('');
 
   const createPodcast = useMutation(api.podcasts.createPodcast)
 
@@ -120,7 +126,7 @@ const CreatePodcast = () => {
                 <FormItem className="flex flex-col gap-2.5">
                   <FormLabel className="text-16 font-bold text-white-1">Title</FormLabel>
                   <FormControl>
-                    <Input className="input-class focus-visible:ring-offset-orange-1" placeholder="JSM Pro Podcast" {...field} />
+                    <Input className="input-class focus-visible:ring-offset-orange-1" placeholder="Otherworld" {...field} />
                   </FormControl>
                   <FormMessage className="text-white-1" />
                 </FormItem>
@@ -185,6 +191,8 @@ const CreatePodcast = () => {
                imagePrompt={imagePrompt}
                setImagePrompt={setImagePrompt}
               />
+
+
 
               <div className="mt-10 w-full">
                 <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">

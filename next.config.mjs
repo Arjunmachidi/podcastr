@@ -8,6 +8,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'bright-elk-383.convex.cloud'
+      },
+      {
+        protocol: 'https',
         hostname: 'sleek-capybara-771.convex.cloud'
       },
       {

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const PodcastCard = ({
-  imgUrl, title, description, podcastId
+  imgUrl = "/default-image.jpg", title, description, podcastId
 }: PodcastCardProps) => {
   const router = useRouter()
 

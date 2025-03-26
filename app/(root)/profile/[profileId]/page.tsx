@@ -22,7 +22,8 @@ const ProfilePage = ({
     authorId: params.profileId,
   });
 
-  if (!user || !podcastsData) return <LoaderSpinner />;
+  if (!user) return <EmptyState title="User not found" buttonLink="/" buttonText="Go Home" />;
+  if (!podcastsData) return <LoaderSpinner />;
 
   return (
     <section className="mt-9 flex flex-col">
@@ -56,6 +57,7 @@ const ProfilePage = ({
           <EmptyState
             title="You have not created any podcasts yet"
             buttonLink="/create-podcast"
+            buttonText="Create Podcast"
           />
         )}
       </section>
